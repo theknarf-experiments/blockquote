@@ -7,14 +7,30 @@ require('./style.scss');
 require('photon/sass/photon.scss');
 
 var wrapper = document.createElement('div');
-wrapper.innerHTML = '<div class="window"> <header class="toolbar toolbar-header"><h1 class="title">Header</h1></header><div class="window-content"><div class="pane-group"><div class="pane-sm sidebar">sidebar</div><div class="pane"><div id="editor"><p>Editor content goes here.</p></div></div></div></div><footer class="toolbar toolbar-footer"><h1 class="title">Footer</h1></footer></div>'; 
 document.body.appendChild(wrapper);
 
-/*
-document.write( "Node.js " + process.versions.node );
-document.write( ", Chromium " + process.versions.chrome );
-document.write( ",and Electrion " + process.versions.electron );
-*/
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+		<div className="window">
+			<header className="toolbar toolbar-header">
+				<h1 className="title">editor</h1>
+			</header>
+			<div className="window-content">
+				<div className="pane-group">
+					<div className="pane-sm sidebar"> sidebar </div>
+					<div className="pane">
+						<div id="editor"><p>Editor content goes here.</p></div>
+					</div>
+				</div>
+			</div>
+			<footer className="toolbar toolbar-footer">
+				<h1 class="title"> Node.js {process.versions.node}, Chromeium {process.versions.chrome}, Electron {process.versions.electron} </h1>
+			</footer>
+		</div>,
+		wrapper
+);
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
