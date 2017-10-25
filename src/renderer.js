@@ -7,7 +7,7 @@ require('./style.scss');
 require('photon/sass/photon.scss');
 
 var wrapper = document.createElement('div');
-wrapper.innerHTML = '<div class="window"> <header class="toolbar toolbar-header"><h1 class="title">Header</h1></header><div class="window-content"><div class="pane-group"><div class="pane-sm sidebar">sidebar</div><div class="pane" id="editor">main</div></div></div><footer class="toolbar toolbar-footer"><h1 class="title">Footer</h1></footer></div>'; 
+wrapper.innerHTML = '<div class="window"> <header class="toolbar toolbar-header"><h1 class="title">Header</h1></header><div class="window-content"><div class="pane-group"><div class="pane-sm sidebar">sidebar</div><div class="pane"><div id="editor"><p>Editor content goes here.</p></div></div></div></div><footer class="toolbar toolbar-footer"><h1 class="title">Footer</h1></footer></div>'; 
 document.body.appendChild(wrapper);
 
 /*
