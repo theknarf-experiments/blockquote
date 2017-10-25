@@ -15,6 +15,8 @@
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",
     "electron": "^1.7.9",
+    "html-webpack-inline-source-plugin": "0.0.9",
+    "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
@@ -28,6 +30,7 @@
     "@ckeditor/ckeditor5-essentials": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-paragraph": "^1.0.0-alpha.1",
     "devtron": "^1.4.0",
-    "electron-debug": "^1.4.0"
+    "electron-debug": "^1.4.0",
+    "photon": "git+ssh://git@github.com/connors/photon.git"
   }
 }

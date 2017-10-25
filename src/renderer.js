@@ -4,8 +4,17 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 
+var editorEl = document.createElement('div');
+document.body.appendChild(editorEl);
+
+document.write( "Node.js " + process.versions.node );
+document.write( ", Chromium " + process.versions.chrome );
+document.write( ",and Electrion " + process.versions.electron );
+
+document.body.style = "margin: 0; -webkit-app-region: drag;";
+
 ClassicEditor
-    .create( document.querySelector( '#editor' ), {
+    .create( editorEl, {
         plugins: [ Essentials, Paragraph, Bold, Italic ],
         toolbar: [ 'bold', 'italic' ]
     } )
@@ -15,4 +24,3 @@ ClassicEditor
     .catch( error => {
         console.error( error.stack );
     } );
-//*/

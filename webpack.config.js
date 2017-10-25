@@ -1,7 +1,10 @@
 const webpack = require('webpack'),
 		path = require('path'),
 		UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
-		CopyWebpackPlugin = require('copy-webpack-plugin');
+		CopyWebpackPlugin = require('copy-webpack-plugin'),
+		HtmlWebpackPlugin = require('html-webpack-plugin'),
+		HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin'),
+		DeleteChunksPlugin = require('./DeleteChunksPlugin');
 
 module.exports = {
 	entry: {
@@ -38,9 +41,12 @@ module.exports = {
 	},
 	plugins: [
 		new UglifyJSPlugin(),
-		new CopyWebpackPlugin([
-				{ from: './src/index.html' }
-		]),
+		new HtmlWebpackPlugin({
+			chunks: ['renderer'],
+			inlineSource: '.(js|css)$'
+		}),
+		new HtmlWebpackInlineSourcePlugin(),
+		new DeleteChunksPlugin({ chunks: ['renderer'] }),
 	],
 	target: 'electron',
 	devtool: 'source-map',
