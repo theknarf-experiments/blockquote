@@ -12,7 +12,31 @@ import List from './list';
 ReactDOM.render(
 		<div className="window">
 			<header className="toolbar toolbar-header">
-				<h1 className="title">editor</h1>
+				<div className="toolbar-actions" style={{ marginLeft: "80px" }}>
+				 <div className="btn-group">
+					<button className="btn btn-default">
+					  <span className="icon icon-home"></span>
+					</button>
+					<button className="btn btn-default">
+					  <span className="icon icon-folder"></span>
+					</button>
+					<button className="btn btn-default active">
+					  <span className="icon icon-cloud"></span>
+					</button>
+				 </div>
+
+				 <div className="btn-group">
+					<button className="btn btn-default btn-dropdown">
+						Aa	
+					</button>
+					<button className="btn btn-default"><b>B</b></button>
+					<button className="btn btn-default"><i>i</i></button>
+				 </div>
+
+				 <button className="btn btn-default btn-dropdown pull-right">
+					<span className="icon icon-megaphone"></span>
+				 </button>
+			  </div>
 			</header>
 			<div className="window-content">
 				<div className="pane-group">
