@@ -7,6 +7,7 @@ document.body.appendChild(wrapper);
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor';
+import List from './list';
 
 ReactDOM.render(
 		<div className="window">
@@ -15,7 +16,9 @@ ReactDOM.render(
 			</header>
 			<div className="window-content">
 				<div className="pane-group">
-					<div className="pane-sm sidebar"> sidebar </div>
+					<div className="pane-sm sidebar">
+						<List />
+					</div>
 					<div className="pane">
 						<Editor id="editor"><p>Editor content goes here.</p></Editor>
 					</div>
