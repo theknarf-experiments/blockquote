@@ -2,8 +2,8 @@
  * Written by https://github.com/Hubro
  *  Posted at as a comment: https://github.com/DustinJackson/html-webpack-inline-source-plugin/issues/29
  */
-const path = require('path');
-const fs = require('fs');
+const path = require('path'),
+		fs = require('fs');
 
 function DeleteChunksPlugin(config) {
     this.config = config;

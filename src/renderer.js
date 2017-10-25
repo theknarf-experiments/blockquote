@@ -3,6 +3,7 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+require('./style.scss');
 
 var editorEl = document.createElement('div');
 document.body.appendChild(editorEl);
@@ -10,8 +11,6 @@ document.body.appendChild(editorEl);
 document.write( "Node.js " + process.versions.node );
 document.write( ", Chromium " + process.versions.chrome );
 document.write( ",and Electrion " + process.versions.electron );
-
-document.body.style = "margin: 0; -webkit-app-region: drag;";
 
 ClassicEditor
     .create( editorEl, {

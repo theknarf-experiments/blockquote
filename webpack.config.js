@@ -4,7 +4,8 @@ const webpack = require('webpack'),
 		CopyWebpackPlugin = require('copy-webpack-plugin'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
 		HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin'),
-		DeleteChunksPlugin = require('./DeleteChunksPlugin');
+		DeleteChunksPlugin = require('./DeleteChunksPlugin'),
+		ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
 	entry: {
@@ -47,6 +48,7 @@ module.exports = {
 		}),
 		new HtmlWebpackInlineSourcePlugin(),
 		new DeleteChunksPlugin({ chunks: ['renderer'] }),
+		new ManifestPlugin(),
 	],
 	target: 'electron',
 	devtool: 'source-map',
