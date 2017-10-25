@@ -56,7 +56,7 @@ module.exports = {
 		new ManifestPlugin(),
 	],
 	target: 'electron',
-	devtool: 'source-map',
+	devtool: 'inline-source-map',
 	node: {
 		__dirname: false,
 		__filename: false

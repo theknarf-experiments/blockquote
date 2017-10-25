@@ -1,8 +1,3 @@
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 require('./style.scss');
 require('photon/sass/photon.scss');
 
@@ -11,6 +6,7 @@ document.body.appendChild(wrapper);
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Editor from './editor';
 
 ReactDOM.render(
 		<div className="window">
@@ -21,25 +17,14 @@ ReactDOM.render(
 				<div className="pane-group">
 					<div className="pane-sm sidebar"> sidebar </div>
 					<div className="pane">
-						<div id="editor"><p>Editor content goes here.</p></div>
+						<Editor id="editor"><p>Editor content goes here.</p></Editor>
 					</div>
 				</div>
 			</div>
 			<footer className="toolbar toolbar-footer">
-				<h1 class="title"> Node.js {process.versions.node}, Chromeium {process.versions.chrome}, Electron {process.versions.electron} </h1>
+				<h1 className="title"> Node.js {process.versions.node}, Chromeium {process.versions.chrome}, Electron {process.versions.electron} </h1>
 			</footer>
 		</div>,
 		wrapper
 );
 
-ClassicEditor
-    .create( document.querySelector( '#editor' ), {
-        plugins: [ Essentials, Paragraph, Bold, Italic ],
-        toolbar: [ 'bold', 'italic' ]
-    } )
-    .then( editor => {
-        console.log( 'Editor was initialized', editor );
-    } )
-    .catch( error => {
-        console.error( error.stack );
-    } );
