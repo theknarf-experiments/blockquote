@@ -7,11 +7,12 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Link from  '@ckeditor/ckeditor5-link/src/link';
 import Blockquote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-
+import Autoformater from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataprocessor';
 
 // Simple plugin which loads the data processor.
@@ -35,16 +36,17 @@ export default class Editor extends React.Component {
 		ClassicEditor
 			 .create( document.querySelector( "#" + this.props.id ), {
 				 plugins: [
+					 Autoformater,
 					 Markdown,
 					 Essentials,
 					 Paragraph,
 					 Heading,
-					 Bold, Italic, Underline,
+					 Bold, Italic, Underline, Code,
 					 Link,
 					 List,
 					 Blockquote
 				 ],
-				 toolbar: [ 'headings', 'bold', 'italic', 'underline', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+				 toolbar: [ 'headings', 'bold', 'italic', 'underline', 'code', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
 				 /*heading: {
 					 options: [
 					 { modelElement: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },

@@ -36,12 +36,20 @@ ReactDOM.render(
 					</button>
 				 </div>
 
+				 <button className="btn btn-default btn-dropdown">
+					Aa	
+				 </button>
+
 				 <div className="btn-group">
-					<button className="btn btn-default btn-dropdown">
-						Aa	
-					</button>
 					<button className="btn btn-default" onClick={boldOnClick}><b>B</b></button>
-					<button className="btn btn-default" onClick={italicOnClick}><i>i</i></button>
+					<button className="btn btn-default" onClick={italicOnClick}><i>I</i></button>
+					<button className="btn btn-default underline">U</button>
+				 </div>
+
+				 <div className="btn-group">
+					<button className="btn btn-default"><span class="icon icon-code" /></button>
+					<button className="btn btn-default"><span class="icon icon-link" /></button>
+					<button className="btn btn-default"><span className="icon icon-quote" /></button>
 				 </div>
 
 				 <button className="btn btn-default btn-dropdown pull-right">
