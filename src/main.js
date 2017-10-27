@@ -16,11 +16,13 @@ function createWindow () {
 	  titleBarStyle: 'hidden'
   });
 
+  /*
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
-  }));
+  }));//*/
+  mainWindow.loadURL('http://localhost:8081/');
 
   mainWindow.on('ready-to-show', function() { 
 	  mainWindow.show(); 

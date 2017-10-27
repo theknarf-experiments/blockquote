@@ -4,7 +4,8 @@
   "description": "",
   "main": "./dist/main.js",
   "scripts": {
-    "dev": "webpack && electron ."
+    "dev": "webpack && electron .",
+    "serv": "devserver=yes webpack-dev-server"
   },
   "author": "Frank Lyder Bredland <fl@nyggen.com>",
   "license": "MIT",
@@ -26,13 +27,21 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3",
     "webpack-manifest-plugin": "^1.3.2"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-basic-styles": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-block-quote": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-editor-classic": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-essentials": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-heading": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-image": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-link": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-list": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-markdown-gfm": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-paragraph": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-upload": "^1.0.0-alpha.1",
     "devtron": "^1.4.0",
     "electron-debug": "^1.4.0",
     "photon": "git+ssh://git@github.com/connors/photon.git",

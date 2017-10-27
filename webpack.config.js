@@ -8,7 +8,7 @@ const webpack = require('webpack'),
 		ManifestPlugin = require('webpack-manifest-plugin'),
 		ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
+var config = {
 	entry: {
 		main: './src/main.js',
 		renderer: './src/renderer.js'
@@ -52,7 +52,6 @@ module.exports = {
 			inlineSource: '.(js|css)$'
 		}),
 		new HtmlWebpackInlineSourcePlugin(),
-		new DeleteChunksPlugin({ chunks: ['renderer'] }),
 		new ManifestPlugin(),
 	],
 	target: 'electron',
@@ -62,3 +61,10 @@ module.exports = {
 		__filename: false
 	},
 };
+
+if(process.env.devserver !== 'yes')
+	config.plugins.push(new DeleteChunksPlugin({ chunks: ['renderer'] }));
+else
+	delete config.entry.main;
+
+module.exports = config;

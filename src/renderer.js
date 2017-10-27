@@ -9,6 +9,17 @@ import ReactDOM from 'react-dom';
 import Editor from './editor';
 import List from './list';
 
+var editor = null;
+var markdownDiv = null;
+const boldOnClick = () => {
+	if(editor !== null)
+		editor.commands.get('bold').execute();
+};
+const italicOnClick = () => {
+	if(editor !== null)
+		editor.commands.get('italic').execute();
+};
+
 ReactDOM.render(
 		<div className="window">
 			<header className="toolbar toolbar-header">
@@ -29,8 +40,8 @@ ReactDOM.render(
 					<button className="btn btn-default btn-dropdown">
 						Aa	
 					</button>
-					<button className="btn btn-default"><b>B</b></button>
-					<button className="btn btn-default"><i>i</i></button>
+					<button className="btn btn-default" onClick={boldOnClick}><b>B</b></button>
+					<button className="btn btn-default" onClick={italicOnClick}><i>i</i></button>
 				 </div>
 
 				 <button className="btn btn-default btn-dropdown pull-right">
@@ -44,7 +55,14 @@ ReactDOM.render(
 						<List />
 					</div>
 					<div className="pane">
-						<Editor id="editor"><p>Editor content goes here.</p></Editor>
+						<Editor id="editor" getEditor={(e) => {
+							editor=e;
+							editor.document.on( 'changesDone', () => {
+								if(markdownDiv !== null)
+									 markdownDiv.innerHTML = editor.getData();
+							} );
+						}}><p>Editor content goes here.</p></Editor>
+						<pre ref={div => markdownDiv = div}>Markdown goes here</pre>
 					</div>
 				</div>
 			</div>

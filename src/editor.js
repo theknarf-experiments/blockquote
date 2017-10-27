@@ -6,6 +6,18 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+import List from '@ckeditor/ckeditor5-list/src/list';
+import Link from  '@ckeditor/ckeditor5-link/src/link';
+import Blockquote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+
+import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataprocessor';
+
+// Simple plugin which loads the data processor.
+function Markdown( editor ) {
+    editor.data.processor = new GFMDataProcessor();
+}
 
 export default class Editor extends React.Component {
 	constructor(props) {
@@ -22,14 +34,34 @@ export default class Editor extends React.Component {
 	componentDidMount() {
 		ClassicEditor
 			 .create( document.querySelector( "#" + this.props.id ), {
-				  plugins: [ Essentials, Paragraph, Bold, Italic ],
-				  toolbar: [ 'bold', 'italic' ]
+				 plugins: [
+					 Markdown,
+					 Essentials,
+					 Paragraph,
+					 Heading,
+					 Bold, Italic, Underline,
+					 Link,
+					 List,
+					 Blockquote
+				 ],
+				 toolbar: [ 'headings', 'bold', 'italic', 'underline', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+				 /*heading: {
+					 options: [
+					 { modelElement: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+					 { modelElement: 'heading1', viewElement: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+					 { modelElement: 'heading2', viewElement: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+					 ]
+				 }*/
 			 } )
-			 .then( editor => {
-				  console.log( 'Editor was initialized', editor );
-			 } )
-			 .catch( error => {
-				  console.error( "Editor error", error.stack );
-			 } );
+		.then( editor => {
+			console.log( 'Editor was initialized', editor );
+
+			if(typeof this.props.getEditor == 'function') {
+				this.props.getEditor(editor);
+			}
+		} )
+		.catch( error => {
+			console.error( "Editor error", error.stack );
+		} );
 	}
 }
