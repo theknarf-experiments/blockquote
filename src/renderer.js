@@ -47,8 +47,8 @@ ReactDOM.render(
 				 </div>
 
 				 <div className="btn-group">
-					<button className="btn btn-default"><span class="icon icon-code" /></button>
-					<button className="btn btn-default"><span class="icon icon-link" /></button>
+					<button className="btn btn-default"><span className="icon icon-code" /></button>
+					<button className="btn btn-default"><span className="icon icon-link" /></button>
 					<button className="btn btn-default"><span className="icon icon-quote" /></button>
 				 </div>
 

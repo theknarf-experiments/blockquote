@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, nativeImage} = require('electron');
 require('electron-debug')({});
 
 const path = require('path')
@@ -13,7 +13,8 @@ function createWindow () {
 	  width: 800,
 	  height: 600,
 	  show: false,
-	  titleBarStyle: 'hidden'
+	  titleBarStyle: 'hidden',
+	  icon: nativeImage.createFromPath(path.join(__dirname, 'favicon-96.png'))
   });
 
   /*
