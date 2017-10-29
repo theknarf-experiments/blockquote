@@ -2,6 +2,7 @@
 
 dist/
 *.ai
+Blockquote-darwin-x64/
 
 # Created by https://www.gitignore.io/api/vim,osx,node,linux,windows,intellij,sublimetext
 
