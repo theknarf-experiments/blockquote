@@ -9,6 +9,14 @@ import ReactDOM from 'react-dom';
 import Editor from './editor';
 import List from './list';
 
+import configureStore from './store/configureStore.jsx';
+
+var store = configureStore();
+store.subscribe(() => console.log( store.getState() ));
+store.dispatch({ type: 'INCREMENT' })
+store.dispatch({ type: 'INCREMENT' })
+store.dispatch({ type: 'DECREMENT' })
+
 var editor = null;
 var markdownDiv = null;
 const boldOnClick = () => {

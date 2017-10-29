@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack && electron .",
     "serv": "devserver=yes webpack-dev-server",
-	 "pack": "icon-gen -i assets/logo.svg -t svg -o ./dist -m icns -r && electron-packager . --icon=dist/app.icns --overwrite"
+    "pack": "icon-gen -i assets/logo.svg -t svg -o ./dist -m icns -r && electron-packager . --icon=dist/app.icns --overwrite"
   },
   "author": "Frank Lyder Bredland <fl@nyggen.com>",
   "license": "MIT",
@@ -18,6 +18,7 @@
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",
     "electron": "^1.7.9",
+    "electron-devtools-installer": "^2.2.1",
     "electron-packager": "^9.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
@@ -50,6 +51,9 @@
     "electron-debug": "^1.4.0",
     "photon": "git+ssh://git@github.com/connors/photon.git",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }
