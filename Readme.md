@@ -1,3 +1,4 @@
-# ckeditor5 electron
+# Blockquote 
 
-A note app, implemented as a simple electron wrapper around ckeditor5.
+A replacement for the built in MacOS Notes app, built as a Electron app around ckeditor5.
+Inspiration from [bear](http://www.bear-writer.com/) and [Caret](https://caret.io/).
