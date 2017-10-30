@@ -5,7 +5,7 @@ import List from './list';
 
 const App = ({
         children
-}/*, {store}*/) => {
+}, {store}) => {
 	var editor = null;
 	var markdownDiv = null;
 	const boldOnClick = () => {
@@ -80,11 +80,5 @@ const App = ({
 		</div>
 	);
 };
-
-/*
-App.contextTypes = {
-	store: React.PropTypes.object
-};
-//*/
 
 export default App;
