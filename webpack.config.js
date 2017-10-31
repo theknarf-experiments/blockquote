@@ -55,7 +55,7 @@ var config = {
 		new ManifestPlugin(),
 	],
 	target: 'electron',
-	devtool: 'inline-source-map',
+	devtool: '#inline-source-map',
 	node: {
 		__dirname: false,
 		__filename: false
