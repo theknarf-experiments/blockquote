@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor';
 import List from './list';
+import PropTypes from 'prop-types'
+import { NewNoteAction } from '../actionreducers/notes';
 
-const App = ({
-        children
-}, {store}) => {
+const App = ({children}, {store}) => {
 	var editor = null;
 	var markdownDiv = null;
 	const boldOnClick = () => {
@@ -16,6 +16,9 @@ const App = ({
 		if(editor !== null)
 			editor.commands.get('italic').execute();
 	};
+	const newClick = () => {
+		store.dispatch(NewNoteAction());
+	}
 
 	return (
 		<div className="window">
@@ -73,12 +76,16 @@ const App = ({
 			</div>
 			<footer className="toolbar toolbar-footer">
 				<div className="toolbar-actions">
-					<button className="btn btn-default">New</button>
+					<button className="btn btn-default" onClick={newClick}>New</button>
 					<span> Node.js {process.versions.node}, Chromeium {process.versions.chrome}, Electron {process.versions.electron} </span>
 				</div>
 			</footer>
 		</div>
 	);
+};
+
+App.contextTypes = {
+	store: PropTypes.object
 };
 
 export default App;

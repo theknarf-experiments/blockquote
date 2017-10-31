@@ -4,7 +4,7 @@ const webpack = require('webpack'),
 		CopyWebpackPlugin = require('copy-webpack-plugin'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
 		HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin'),
-		DeleteChunksPlugin = require('./DeleteChunksPlugin'),
+		DeleteChunksPlugin = require('./src/DeleteChunksPlugin'),
 		ManifestPlugin = require('webpack-manifest-plugin'),
 		ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -24,7 +24,8 @@ var config = {
 			exclude: /node_modules/,
 			loader: 'babel-loader',
 			options: {
-				presets: ['env', 'react']
+				presets: ['env', 'react'],
+				plugins: ['transform-object-rest-spread', 'syntax-object-rest-spread']
 			}
 		},
 		{

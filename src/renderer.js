@@ -11,11 +11,6 @@ import configureStore from './store/configureStore.jsx';
 import { Provider } from 'react-redux';
 
 var store = configureStore();
-store.subscribe(() => console.log( store.getState() ));
-store.dispatch({ type: 'INCREMENT' })
-store.dispatch({ type: 'INCREMENT' })
-store.dispatch({ type: 'DECREMENT' })
-
 const Renderer = () => {
 	ReactDOM.render(<Provider store={store}><App /></Provider>, wrapper);
 };
