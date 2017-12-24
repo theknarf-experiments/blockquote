@@ -22,7 +22,7 @@ function createWindow () {
 		protocol: 'file:',
 		slashes: true
 		}));//*/
-	mainWindow.loadURL('http://localhost:8081/');
+	mainWindow.loadURL('http://localhost:8080/');
 
 	mainWindow.on('ready-to-show', function() { 
 		mainWindow.show(); 

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import { NoteReducer as notes } from '../actionreducers/notes'; 
+import { NoteReducer as notes, NoteSelected as current_note } from '../actionreducers/notes'; 
 
 export default combineReducers({
-	notes
+	notes,
+	current_note
 });
