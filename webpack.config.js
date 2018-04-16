@@ -6,7 +6,10 @@ const webpack = require('webpack'),
 		HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin'),
 		DeleteChunksPlugin = require('./src/DeleteChunksPlugin'),
 		ManifestPlugin = require('webpack-manifest-plugin'),
-		ExtractTextPlugin = require("extract-text-webpack-plugin");
+		ExtractTextPlugin = require("extract-text-webpack-plugin"),
+		CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' );
+
+const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 
 var config = {
 	entry: {
@@ -43,10 +46,34 @@ var config = {
 		{
 			test: /\.(eot|ttf|woff|woff2)$/,
 			loader: 'file-loader?name=fonts/[name].[ext]'
-		}
+		},
+		{
+            test: /ckeditor5-[^/]+\/theme\/[\w-/]+\.css$/,
+            use: [
+                {
+                    loader: 'style-loader',
+                    options: {
+                        singleton: true
+                    }
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: styles.getPostCssConfig( {
+                        themeImporter: {
+                            themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
+                        },
+                        minify: true
+                    } )
+                },
+            ]
+        }
 		]
 	},
 	plugins: [
+		new CKEditorWebpackPlugin( {
+            // See https://docs.ckeditor.com/ckeditor5/latest/features/ui-language.html
+            language: 'en'
+        } ),
 		new UglifyJSPlugin(),
 		new HtmlWebpackPlugin({
 			chunks: ['renderer'],

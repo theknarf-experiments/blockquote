@@ -1,5 +1,5 @@
 require('./style/style.scss');
-require('photon/sass/photon.scss');
+require('./style/photon/photon.scss');
 
 var wrapper = document.createElement('div');
 document.body.appendChild(wrapper);
