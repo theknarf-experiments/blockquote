@@ -61,8 +61,7 @@ const App = ({children, dispatch}) => {
 					<List />
 				</div>
 				<div className="pane">
-					<Editor id="editor" getEditor={(e) => {
-						editor=e;
+					<Editor id="editor" getEditor={editor => {
 						editor.document.on( 'changesDone', () => {
 							if(markdownDiv !== null)
 								 markdownDiv.innerHTML = editor.getData();

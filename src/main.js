@@ -1,14 +1,14 @@
-const {app, BrowserWindow, nativeImage} = require('electron');
-require('electron-debug')({});
+const { app, BrowserWindow, nativeImage } = require('electron'),
+		path = require('path'),
+		url = require('url'),
+		installExtension = require('electron-devtools-installer').default,
+		{ REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
-const path = require('path'),
-		url = require('url');
+require('electron-debug')({});
 
 let mainWindow;
 
 function createWindow () {
-	//require('devtron').install();
-
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
@@ -21,34 +21,30 @@ function createWindow () {
 		protocol: 'file:',
 		slashes: true
 	}));
-	//mainWindow.loadURL('http://localhost:8080/');
 
-	mainWindow.on('ready-to-show', function() {
+	mainWindow.on('ready-to-show', () => {
 		mainWindow.show();
 		mainWindow.focus();
 	});
 
-	mainWindow.on('closed', function () { mainWindow = null });
+	mainWindow.on('closed', () => mainWindow = null );
 }
-
-const installExtension = require('electron-devtools-installer').default;
-const { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
 app.on('ready', () => {
 	[REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS].forEach(extension => {
 		installExtension(extension)
-			.then((name) => console.log(`Added Extension: ${name}`))
-			.catch((err) => console.log('An error occurred: ', err));
-	}); //*/
+			.then(name => console.log(`Added Extension: ${name}`))
+			.catch(err => console.log('An error occurred: ', err));
+	});
 	createWindow();
 });
 
-app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin')
+app.on('window-all-closed', () => {
+	if( process.platform !== 'darwin' )
 		app.quit();
 });
 
-app.on('activate', function () {
-	if (mainWindow === null)
+app.on('activate', () => {
+	if( mainWindow === null )
 		createWindow();
 });
