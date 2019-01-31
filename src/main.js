@@ -15,35 +15,31 @@ function createWindow () {
 		show: false,
 		titleBarStyle: 'hidden'
 	});
-
-	/*
-		mainWindow.loadURL(url.format({
-		pathname: path.join(__dirname, 'index.html'),
+	
+	mainWindow.loadURL(url.format({
+		pathname: path.join(__dirname, '../dist/index.html'),
 		protocol: 'file:',
 		slashes: true
-		}));//*/
-	mainWindow.loadURL('http://localhost:8080/');
+	}));
+	//mainWindow.loadURL('http://localhost:8080/');
 
-	mainWindow.on('ready-to-show', function() { 
-		mainWindow.show(); 
-		mainWindow.focus(); 
+	mainWindow.on('ready-to-show', function() {
+		mainWindow.show();
+		mainWindow.focus();
 	});
 
-	mainWindow.on('closed', function () {
-		// Dereference the window object, usually you would store windows
-		// in an array if your app supports multi windows, this is the time
-		// when you should delete the corresponding element.
-		mainWindow = null
-	});
+	mainWindow.on('closed', function () { mainWindow = null });
 }
 
-import installExtension, { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+const installExtension = require('electron-devtools-installer').default;
+const { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+
 app.on('ready', () => {
 	[REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS].forEach(extension => {
 		installExtension(extension)
 			.then((name) => console.log(`Added Extension: ${name}`))
 			.catch((err) => console.log('An error occurred: ', err));
-	});
+	}); //*/
 	createWindow();
 });
 
