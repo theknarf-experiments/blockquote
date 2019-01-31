@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import CKEditor from '@ckeditor/ckeditor5-react';
 
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -20,50 +21,25 @@ function Markdown( editor ) {
     editor.data.processor = new GFMDataProcessor();
 }
 
-export default class Editor extends React.Component {
-	constructor(props) {
-		super(props);
-		this.props = props;
-	}
+const Editor = ({ data, getEditor }) =>
+	<CKEditor
+		editor={ ClassicEditor }
+		data={ data }
+		config={{
+			plugins: [
+				Autoformater,
+				Markdown,
+				Essentials,
+				Paragraph,
+				Heading,
+				Bold, Italic, Underline, Code,
+				Link,
+				List,
+				Blockquote
+			],
+			toolbar: [ 'headings', 'bold', 'italic', 'underline', 'code', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo']
+		}}
+		onInit={ getEditor }
+		/>;
 
-	render() {
-		return <div id={this.props.id}>{this.props.children}</div>;
-	}
-
-	shouldComponentUpdate() { return false; }
-
-	componentDidMount() {
-		ClassicEditor
-			 .create( document.querySelector( "#" + this.props.id ), {
-				 plugins: [
-					 Autoformater,
-					 Markdown,
-					 Essentials,
-					 Paragraph,
-					 Heading,
-					 Bold, Italic, Underline, Code,
-					 Link,
-					 List,
-					 Blockquote
-				 ],
-				 toolbar: [ 'headings', 'bold', 'italic', 'underline', 'code', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo'],
-				 /*heading: {
-					 options: [
-					 { modelElement: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-					 { modelElement: 'heading1', viewElement: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-					 { modelElement: 'heading2', viewElement: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-					 ]
-				 }*/
-			 } )
-		.then( editor => {
-			console.log( 'Editor was initialized', editor );
-
-			if(typeof this.props.getEditor == 'function') {
-				this.props.getEditor(editor);
-			}
-		} )
-		.catch( error => {
-			console.error( "Editor error", error.stack );
-		} );
-	}
-}
+export default Editor;

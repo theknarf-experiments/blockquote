@@ -13,7 +13,10 @@ function createWindow () {
 		width: 800,
 		height: 600,
 		show: false,
-		titleBarStyle: 'hidden'
+		titleBarStyle: 'hidden',
+		webPreferences: {
+			nodeIntegration: true
+		}
 	});
 	
 	mainWindow.loadURL(url.format({

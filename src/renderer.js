@@ -1,18 +1,20 @@
-require('./style/style.scss');
-require('./style/photon/photon.scss');
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore.jsx';
+import App from './components/app';
 
-var wrapper = document.createElement('div');
+import './style/style.scss';
+import './style/photon/photon.scss';
+
+const wrapper = document.createElement('div');
 document.body.appendChild(wrapper);
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/app';
-import configureStore from './store/configureStore.jsx';
-import { Provider } from 'react-redux';
+const store = configureStore();
 
-var store = configureStore();
-const Renderer = () => {
-	ReactDOM.render(<Provider store={store}><App /></Provider>, wrapper);
-};
-Renderer();
-store.subscribe(Renderer);
+render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	wrapper
+);

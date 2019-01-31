@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Editor from './editor';
 import List from './list';
 import PropTypes from 'prop-types'
-import { NewNoteAction } from '../actionreducers/notes';
+import { NewNoteAction } from '../actionreducers/notes';
 import { connect } from 'react-redux';
 
-const App = ({children, dispatch}) => {
+const App = ({ children, dispatch }) => {
 	var editor = null, markdownDiv = null;
 
 	const boldOnClick = () => {
@@ -17,7 +16,7 @@ const App = ({children, dispatch}) => {
 		if(editor !== null)
 			editor.commands.get('italic').execute();
 	};
-	const newClick = () => dispatch(NewNoteAction());
+	const newClick = () => dispatch(NewNoteAction());
 
 	return <div className="window">
 		<header className="toolbar toolbar-header">
@@ -61,12 +60,14 @@ const App = ({children, dispatch}) => {
 					<List />
 				</div>
 				<div className="pane">
-					<Editor id="editor" getEditor={editor => {
-						editor.document.on( 'changesDone', () => {
-							if(markdownDiv !== null)
-								 markdownDiv.innerHTML = editor.getData();
-						} );
-					}}><p>Editor content goes here.</p></Editor>
+					<Editor
+						data="<p>Editor content goes here.</p>"
+						getEditor={editor => {
+							editor.model.document.on( 'change:data', () => {
+								if(markdownDiv !== null)
+									 markdownDiv.innerHTML = editor.getData();
+							} );
+						}} />
 					<pre ref={div => markdownDiv = div}>Markdown goes here</pre>
 				</div>
 			</div>
@@ -80,4 +81,4 @@ const App = ({children, dispatch}) => {
 	</div>;
 };
 
-export default connect(state => state)(App);
+export default connect()(App);
