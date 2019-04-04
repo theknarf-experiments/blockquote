@@ -1,3 +1,5 @@
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
+
 # Blockquote
 
 A replacement for the built in MacOS Notes app, built as a Electron app around ckeditor5.
